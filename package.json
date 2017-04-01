@@ -16,6 +16,7 @@
     "test": "mocha test/client && mocha test/server"
   },
   "dependencies": {
+    "babel": "^6.23.0",
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "chai": "^3.5.0",
