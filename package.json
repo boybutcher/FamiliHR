@@ -58,12 +58,13 @@
     "babel-cli": "^6.7.5",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.3.2",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.7.2",
     "enzyme": "^2.7.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
-    "webpack": "^2.2.1"
+    "webpack": "^2.3.2"
   },
   "babel": {
     "presets": [
