@@ -37,11 +37,11 @@ class GameOver extends React.Component {
             focus
             placeholder="NAME"
             onChange={this.onNameChange}
-            style={{width: '65%'}}
+            style={{width: '70%'}}
           />
         <Button 
           basic
-          style={{width: '34%'}}
+          style={{width: '28%'}}
           onClick={this.onSubmit}
         > Submit
         </Button>

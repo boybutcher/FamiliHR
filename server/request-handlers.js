@@ -217,12 +217,21 @@ var postHint = function(req, res) {
 var deleteHint = function(req, res) {
   var hintInfo = req.body;
   console.log('---remove', hintInfo)
-  mongoHints.removeHint(hintInfo, function (err) {
+  mongoHints.removeHint(hintInfo, function (err, success) {
+    console.log('success', success)
     if (err) {
       console.error(err);
     } else {
       console.log('---removeHint', hintInfo);
-      res.sendStatus(201);
+      mongoHints.getHintsByID(hintInfo.cardID, function(err, hints) {
+        if (err) {
+          console.error(err);
+        } else {
+          shuffle(hints);
+          console.log('getHints sent from deleteHint', hints);
+          res.status(201).send(hints);
+        }
+      })
     }
   });
 };

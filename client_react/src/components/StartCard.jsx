@@ -126,18 +126,23 @@ class StartCard extends React.Component {
             <Form.Field>
               <Input
                 onChange={this.inputHint}
-                focus placeholder='Your Hint'
-                autoHeight/>
+                placeholder='Your Hint'
+                icon>
+                <input />
+                  <Button
+                    onClick={this.onSubmitHint}
+                    size='medium'
+                    icon>
+                    <Icon name='write' />
+                  </Button>
+                
+              </Input>
             </Form.Field>
               <Button
+                basic
+                color='black'
                 onClick={(e)=>{e.preventDefault()}}
               >NO HINTS AVAILABLE</Button>
-              <Button
-                onClick={this.onSubmitHint}
-                size='medium'
-                icon>
-                <Icon name='write' />
-              </Button>
           </Form>
         </div>
       )

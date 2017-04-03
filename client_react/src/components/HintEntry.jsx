@@ -8,9 +8,6 @@ class HintEntry extends React.Component {
     }
     this.onRemoveHint = this.onRemoveHint.bind(this);
   }
-  componentWillReceiveProps(nextProps) {
-      console.log('componentWillReceiveProps', nextProps);
-    }
 
   onRemoveHint() {   
     console.log('onRemoveHint', this.props.hints[this.props.index])
@@ -33,6 +30,7 @@ class HintEntry extends React.Component {
 
         <Button
           size='medium'
+          onClick={this.onRemoveHint}
           icon>
           <Icon 
             name='close' 
