@@ -9,7 +9,8 @@ var HintsSchema = mongoose.Schema({
 
 var Hint = mongoose.model('Hint', HintsSchema); 
 
-getHintsByID = function (cardIdObj, callback) { 
+getHintsByID = function (cardIdObj, callback) {
+  console.log('getHintsByID') 
   Hint.find(cardIdObj, function(err, hints) {
     if (err) {
       callback(err);
@@ -31,11 +32,12 @@ createHint = function (hintObj, callback) {
 
 var removeHint = function(obj, callback) {
   console.log('db remove', obj)
-  Hint.remove(obj, function(err) {
+  Hint.remove(obj, function(err, success) {
     if (err) {
       callback(err, null);
     } else {
       console.log('---> HINT REMOVED!')
+      callback(null, success)
     }
   })
 };

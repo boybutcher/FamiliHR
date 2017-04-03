@@ -92,10 +92,10 @@
   font-family: arial;
 }
 
-.cohortButton:hover {background-color: #ec8806}
+.cohortButton:hover {background-color: #394d70}
 
 .cohortButton:active {
-  background-color: #ec8806;
+  background-color: #394d70;
   box-shadow: 0 5px #b2b2b2;
   transform: translateY(4px);
 }
@@ -110,7 +110,7 @@
 .profilePic {
   display: block;
   margin: auto;
-  background-color: #fdd38b;
+  background-color: #394d70;
   padding: 10px;
   width: relative;
   height: 200px;
