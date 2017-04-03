@@ -5,6 +5,7 @@ var algorithm = require('./repetition-algorithm');
 var mongoLeaders = require(__dirname + '/../databases/mongo/models/leaders');
 var mongoHints = require(__dirname + '/../databases/mongo/models/hints');
 
+
   // NOTE: mongo structure:
   //   userId, cardId, algoData (an object) {bucket: 'red/orange/green'}
 
@@ -213,14 +214,27 @@ var postHint = function(req, res) {
   });
 };
 
+var deleteHint = function(req, res) {
+  var hintInfo = req.body;
+  console.log('---remove', hintInfo)
+  mongoHints.removeHint(hintInfo, function (err) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log('---removeHint', hintInfo);
+      res.sendStatus(201);
+    }
+  });
+};
+
 var getHints = function(req, res) {
   var cardID = req.query;
-  console.log('---reqquery', req.query);
   mongoHints.getHintsByID(cardID, function(err, hints) {
     if (err) {
       console.error(err);
     } else {
       shuffle(hints);
+      console.log('getHints sent', hints);
       res.status(200).send(hints);
     }
   })
@@ -247,6 +261,7 @@ module.exports = {
 
   hints: {
     post: postHint,
+    delete: deleteHint,
     get: getHints
   },
 

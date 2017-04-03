@@ -37,6 +37,8 @@ router.get('/leaders/get', handlers.leaders.get);
 
 router.post('/hints/new', handlers.hints.post);
 
+router.post('/hints/delete', handlers.hints.delete);
+
 router.get('/hints/get', handlers.hints.get);
 
 router.get('/logout',

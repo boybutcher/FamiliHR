@@ -1,4 +1,6 @@
+import { Icon, Button, Input, Segment } from 'semantic-ui-react';
 import React from 'react';
+import LeaderBoard from './leaderBoard.jsx';
 
 class GameOver extends React.Component {
   constructor(props) {
@@ -26,18 +28,24 @@ class GameOver extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div style={{marginBottom: '5%'}}>
+        <LeaderBoard highScores={this.props.highScores} />
+        <Segment raised style={{textAlign: 'center'}}>
           SCORE: {this.props.score}
-        </div>
-        <input
-          type="text"
-          onChange={this.onNameChange}
-        />
-      <button onClick={this.onSubmit}>
-        SUBMIT SCORE
-      </button>
-      </div>
+        </Segment>
+          <Input
+            focus
+            placeholder="NAME"
+            onChange={this.onNameChange}
+            style={{width: '65%'}}
+          />
+        <Button 
+          basic
+          style={{width: '34%'}}
+          onClick={this.onSubmit}
+        > Submit
+        </Button>
+    </div>
     )
   }
 };

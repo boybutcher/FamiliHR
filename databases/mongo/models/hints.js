@@ -29,5 +29,17 @@ createHint = function (hintObj, callback) {
   });
 }
 
+var removeHint = function(obj, callback) {
+  console.log('db remove', obj)
+  Hint.remove(obj, function(err) {
+    if (err) {
+      callback(err, null);
+    } else {
+      console.log('---> HINT REMOVED!')
+    }
+  })
+};
+
 module.exports.createHint = createHint;
+module.exports.removeHint = removeHint;
 module.exports.getHintsByID = getHintsByID;

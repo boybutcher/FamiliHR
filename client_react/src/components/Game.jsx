@@ -25,7 +25,9 @@ class Game extends React.Component {
     this.submitScore = this.submitScore.bind(this);
     this.submitHint = this.submitHint.bind(this);
     this.getHints = this.getHints.bind(this);
+    this.deleteHint = this.deleteHint.bind(this);
   }
+
 
   componentDidMount () {
     console.log('cards', this.props.cards);
@@ -46,6 +48,7 @@ class Game extends React.Component {
   }
 
   getHints () {
+    console.log('getHints')
     var currentCardID = {
       cardID: this.props.cards[this.state.counter].id
     };
@@ -58,10 +61,26 @@ class Game extends React.Component {
         this.setState({
           hints: hints
         });
-        console.log('HINTS', this.state.hints);
+        console.log('getHints success');
       },
       error: (error) => {
         console.error(error);
+      }
+    })
+  }
+
+  deleteHint (hintInfo) {
+    console.log('delete', hintInfo)
+    $.ajax({
+      url: '/hints/delete',
+      type: 'POST',
+      data: hintInfo,
+      success: () => {
+        console.log('deleteHint');
+        this.getHints();
+      },
+      error: (err) => {
+        console.error(err);
       }
     })
   }
@@ -141,6 +160,8 @@ class Game extends React.Component {
           onHint={this.onHint}
           roundPoints={this.state.roundPoints}
           submitHint={this.submitHint}
+          getHints={this.getHints}
+          deleteHint={this.deleteHint}
         />
       )
     } else if (this.state.display === 'show answer') {
@@ -171,6 +192,7 @@ class Game extends React.Component {
       return (
         <GameOver
           score={this.state.score}
+          highScores={this.props.highScores}
           submitScore={this.submitScore}
         />
       )

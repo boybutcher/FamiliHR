@@ -7,7 +7,8 @@ import DeckOptionsInput from './components/DeckOptionsInput.jsx';
 import LeaderBoard from './components/leaderBoard.jsx';
 import $ from 'jquery';
 import axios from 'axios';
-import {Jumbotron, Col} from 'react-bootstrap';
+import {Jumbotron } from 'react-bootstrap';
+import { Segment } from 'semantic-ui-react';
 
 class Quiz extends React.Component {
   constructor(props) {
@@ -208,10 +209,18 @@ class Quiz extends React.Component {
     if (this.state.page === 'game') {
       return (
         <div>
-          <Jumbotron><img src='../logo.png' style={{width:'100%'}}/></Jumbotron>
-          <Menubar loadDashboard={this.loadDashboard} logOut={this.logOut}/>
-          <div style={{margin: 'auto', width: '32%'}}>
+
+          <Jumbotron>
+            <img 
+              src='../logo.png' 
+              style={{width:'100%'}}/>
+          </Jumbotron>
+          <Menubar 
+            loadDashboard={this.loadDashboard} 
+            logOut={this.logOut}/>
+          <div style={{margin: 'auto', width: '40%'}}>
             <Game
+              highScores={this.state.highScores}
               cards={this.state.cards}
               loadDashboard={this.loadDashboard}
             />
@@ -225,8 +234,26 @@ class Quiz extends React.Component {
         <Jumbotron><img src='../logo.png' style={{width:'100%'}}/></Jumbotron>
         <Menubar loadDashboard={this.loadDashboard} logOut={this.logOut}/>
 
+
         {this.state.page === 'dashboard' ? (
         <div>
+          <div className='legacy'>
+            <Segment 
+              raised
+              style={{marginTop: '10%', textAlign: 'center'}}
+              >LEGACY MODE
+            </Segment>
+            <DeckOptionsInput
+              list={this.state.cohortList}
+              getLegacyCards={this.getLegacyCards}
+              addToSearch={this.addToSearch}/>
+          <Segment 
+            raised
+            style={{textAlign: 'center', marginTop: '10%'}}
+            >GREENFIELD MODE
+          </Segment>
+          </div>
+
           <table className="cohortButtonContainer">
             <tbody>
             <tr>
@@ -250,16 +277,6 @@ class Quiz extends React.Component {
             </tr>
             </tbody>
           </table>
-        <div>
-
-        <DeckOptionsInput
-          list={this.state.cohortList}
-          getLegacyCards={this.getLegacyCards}
-          addToSearch={this.addToSearch}/>
-        </div>
-        <div>
-          <LeaderBoard highScores={this.state.highScores}/>
-        </div>
       </div>
     ) : (
         <div id="quiz">

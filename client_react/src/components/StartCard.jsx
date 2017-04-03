@@ -5,7 +5,8 @@ import {
   Button, 
   Icon, 
   Form, 
-  TextArea } from 'semantic-ui-react';
+  TextArea,
+  Input } from 'semantic-ui-react';
 
 class StartCard extends React.Component {
   constructor(props) {
@@ -119,25 +120,25 @@ class StartCard extends React.Component {
                 NO HINTS
                 </Button>
               </div>
-              <Form>
-                <Form.Field>
-                  <TextArea
-                    onChange={this.inputHint}
-                    placeholder='Your Hint'
-                    autoHeight/>
-                </Form.Field>
-                  <Button
-                    onClick={(e)=>{e.preventDefault()}}
-                  >NO HINTS AVAILABLE</Button>
-                  <Button
-                    onClick={this.onSubmitHint}
-                    size='medium'
-                    icon>
-                    <Icon name='write' />
-                  </Button>
-              </Form>
             </Card.Content>
           </Card>
+          <Form>
+            <Form.Field>
+              <Input
+                onChange={this.inputHint}
+                focus placeholder='Your Hint'
+                autoHeight/>
+            </Form.Field>
+              <Button
+                onClick={(e)=>{e.preventDefault()}}
+              >NO HINTS AVAILABLE</Button>
+              <Button
+                onClick={this.onSubmitHint}
+                size='medium'
+                icon>
+                <Icon name='write' />
+              </Button>
+          </Form>
         </div>
       )
     }

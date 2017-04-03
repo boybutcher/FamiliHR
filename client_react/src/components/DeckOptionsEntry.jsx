@@ -1,5 +1,5 @@
 import React from 'react';
-import {Radio} from 'semantic-ui-react';
+import {Radio, Checkbox, Input } from 'semantic-ui-react';
 
 class DeckOptionsEntry extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class DeckOptionsEntry extends React.Component {
   	return (
       <tr>
         <td>
-          <input type="checkbox" value={this.props.data} onClick={this.props.addToSearch}/>
+          <input type='checkbox' value={this.props.data} onClick={this.props.addToSearch}/>
         </td>
         <td>
           {this.props.data}
